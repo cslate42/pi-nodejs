@@ -27,7 +27,6 @@
     "morgan": "~1.7.0",
     "path": "~0.12.7",
     "rpi-gpio": "^0.7.0",
-    "python-shell": "~0.4.0",
     "client-sessions": "~0.7.0",
     "body-parser": "~1.15.1",
     "express": "~4.13.4",
@@ -36,7 +35,8 @@
     "express-busboy": "~2.5.0",
     "jade": "~1.11.0",
     "util": "~0.10.3",
-    "async": "~2.0.0-rc.6"
+    "async": "~2.0.0-rc.6",
+    "socket.io": "~1.4.6"
   },
   "devDependencies": {
     "mocha": "1.x",
@@ -45,9 +45,6 @@
   "optionalDependencies": {},
   "engines": {
     "node": "*"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec"
   },
   "scripts": {
     "start": "app.js"
