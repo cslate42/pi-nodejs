@@ -22,13 +22,13 @@ html.no-js
         base(href='//#{global.BASE_URL}/public/')
 
         link(rel='stylesheet', href='/assets/bootstrap.min.css', media='screen')
-        link(href='/assets/font-awesome.min.css', rel='stylesheet')
+        link(href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900', rel='stylesheet', type='text/css')
-        link(rel='shortcut icon', sizes='196x196', href='images/webicon.png')
-        link(rel='shortcut icon', sizes='128x128', href='images/webicon.png')
-        link(rel='apple-touch-icon', sizes='128x128', href='images/webicon.png')
-        link(rel='apple-touch-icon-precomposed', sizes='128x128', href='images/webicon.png')
-        link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+        //-    link(rel='shortcut icon', sizes='196x196', href='images/webicon.png')
+            link(rel='shortcut icon', sizes='128x128', href='images/webicon.png')
+            link(rel='apple-touch-icon', sizes='128x128', href='images/webicon.png')
+            link(rel='apple-touch-icon-precomposed', sizes='128x128', href='images/webicon.png')
+            link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
         script(src='http://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js')
         // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
         // WARNING: Respond.js doesn't work if you view the page via file://
@@ -53,12 +53,33 @@ html.no-js
             link(rel="stylesheet" href="#{styleFile}?ver=1.0.0")
             
     body(ontouchstart='')
-        include ./header.jade
+        header
         
         .content
             //-page info created dynamically
             block content
         
-        include ./footer.jade
+        footer
+            .container
+                .col-xs-3.nopadding
+                    a(href='/dashboard/') 
+                        p
+                            i.icon-icon-home
+                        p dashboard
+                .col-xs-3.nopadding
+                    a(href='/pi/')
+                        p
+                            i.icon-icon-arrows
+                        p RPi
+                .col-xs-3.nopadding
+                    a(href='/settings/')
+                        p
+                            i.icon-icon-settings
+                        p Settings        
+                .col-xs-3.nopadding
+                    a(href='/settings/')
+                        p
+                            i.icon-icon-settings
+                        p Settings
     foot
         
