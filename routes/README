@@ -1,0 +1,6 @@
+These are 'pages'
+
+the page name is the file name minus '.js'
+
+directories are preservered (handled by /app.js)
+    ex: /routes/mydir/test.js ==== http://www.MY_SITE.com/mydir/test/

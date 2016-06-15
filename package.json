@@ -1,24 +1,41 @@
 {
-  "author": "Rakesh Pai <rakeshpai@gmail.com>",
+  "author": "Caleb",
   "name": "pi-gpio",
-  "description": "A simple node.js-based GPIO helper for the Raspberry Pi",
-  "version": "0.0.8",
+  "description": "Nodejs server to listen to keyboard and run pi robot",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rakeshpai/pi-gpio.git"
+    "url": "git@github.com/knowsWhereHisTowelIs/pi-nodejs.git"
   },
-  "homepage": "https://github.com/rakeshpai/pi-gpio",
-  "main": "./pi-gpio",
+  "homepage": "https://github.com/knowsWhereHisTowelIs/pi-nodejs",
+  "main": "./app",
   "bugs": {
-    "url": "https://github.com/rakeshpai/pi-gpio/issues"
+    "url": "https://github.com/knowsWhereHisTowelIs/pi-nodejs/issues"
   },
   "tags": [
     "raspberry",
     "pi",
-    "gpio",
-    "simple"
+    "gpio"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "sprintf": "~0.1.5",
+    "python-shell": "~0.4.0",
+    "debug": "~2.2.0",
+    "cookie-parser": "~1.4.3",
+    "md5": "~2.1.0",
+    "serve-favicon": "~2.3.0",
+    "morgan": "~1.7.0",
+    "path": "~0.12.7",
+    "client-sessions": "~0.7.0",
+    "body-parser": "~1.15.1",
+    "express": "~4.13.4",
+    "dateformat": "~1.0.12",
+    "multer": "~1.1.0",
+    "express-busboy": "~2.5.0",
+    "jade": "~1.11.0",
+    "util": "~0.10.3",
+    "async": "~2.0.0-rc.6"
+  },
   "devDependencies": {
     "mocha": "1.x",
     "should": "1.x"
@@ -29,5 +46,13 @@
   },
   "scripts": {
     "test": "mocha --reporter spec"
-  }
+  },
+  "bin": {
+    "pi-gpio": "server.js"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "license": "BSD-2-Clause"
 }

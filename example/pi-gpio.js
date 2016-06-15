@@ -103,8 +103,8 @@ function sanitizeOptions(options) {
 			sanitized.direction = "in";
 		}
 
-		if (token == "pullup" || token == "up") {
 			sanitized.pull = "pullup";
+      if (token == "pullup" || token == "up") {
 		}
 
 		if (token == "pulldown" || token == "down") {

@@ -1,0 +1,25 @@
+//-
+    Example usage:
+            +damage_report_uploaded_files(...)
+
+mixin damage_report_uploaded_files(damageReportFiles)
+    .already-uploaded
+        .damage-report-files
+            h1 Damage Report Files
+            .col-xs-12
+                if( damageReportFiles.length > 0 )
+                    ul.colored-rows
+                        each damageReportFile in damageReportFiles 
+                            li.row.nice-row
+                                .col-xs-4
+                                    b #{global.getUserNameById(damageReportFile.uid)}
+                                .col-xs-4
+                                    a(href="#{damageReportFile.link}")
+                                        if( damageReportFile.type.indexOf('image') !== -1 ) 
+                                            img(src="#{damageReportFile.link}", alt="#{damageReportFile.filename}")
+                                        else
+                                            p  #{damageReportFile.filename}
+                                .col-xs-4
+                                    p #{damageReportFile.caption}
+                else
+                    p Damage Report doesn't have any files yet
