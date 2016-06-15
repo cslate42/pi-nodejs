@@ -11,6 +11,7 @@ var tools = require(global.ROOT_PATH + 'lib/tools.js');
 global.preparePageData = function(req, res, next) {
     global.BASE_URL = req.get('host').replace(':8000', '');
     
+    /**
     var redirectToLogin = true;
     // if is logged in or at login page don't redirect
     if( ( typeof req.session === "object" && req.session.isLoggedIn === true ) || req.originalUrl.indexOf('/login') === 0 ) {
@@ -18,7 +19,6 @@ global.preparePageData = function(req, res, next) {
     }
     
     //console.log("session: ", req.session);
-    
     if( redirectToLogin === true ) {
         console.log("===========Redirecting to login:====================");
         console.log("-----typeof req.session", typeof req.session);
@@ -28,6 +28,7 @@ global.preparePageData = function(req, res, next) {
         res.redirect('/login/');
         res.end();
     }
+    **/
     
     global.REQUEST = req;
     global.REQUEST.slashedUrl = global.addTrailingSlash( req.originalUrl );
