@@ -31,7 +31,8 @@ function keyboardInterface() {
     });
     $(document).keyup(function(event){
         if( ! isListenToKeyboard ) return;
-        
+        console.log("REMOVING", event.key, event.which);
+        keysPressed[ event.key ] = null;
         delete keysPressed[ event.key ];
     });
 }
