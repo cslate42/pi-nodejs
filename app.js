@@ -9,7 +9,7 @@ files.getAllFilesInDirectory("./includes").forEach(function (file) {
 });
 
 global.dbDebug = false;
-global.gpio = require('.lib/pi-interface/gpio.js');
+global.gpio = require('./lib/pi-interface/gpio.js');
 
 var debug = require('debug')('my-app:server');
 var http = require('http');
