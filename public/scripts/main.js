@@ -9,7 +9,7 @@ $( document ).ready(function() {
 });
 
 function keyboardInterface() {
-    if( $("#pi-controls").size() === 1 && $("#pi-controls").data('activate-pi-controls') === 'true' ) {
+    if( $("#pi-controls").size() !== 1 && $("#pi-controls").data('activate-pi-controls') !== 'true' ) {
         return; //if not supposed to listen to controls don't
     }
     

@@ -1,6 +1,14 @@
 
+var gpio = require('lib/pi-interface/gpio');
+
 global.socketIoClients['update-controls'] = function (client, data) {
-    console.log("HERE", data);
-    client.emit("HERE1", data);
-    //client.broadcast.emit("HERE2", data);
+    var keysPressed = data['keysPressed'] ? data['keysPressed'] : [];
+    if( keysPressed['a'] ) {
+        gpio.on();
+    } else {
+        gpio.off();
+    }
+    
+    console.log("EMITING: update-controls-results", keysPressed);
+    client.emit("update-controls-results", data);
 };
