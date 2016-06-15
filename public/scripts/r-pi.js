@@ -3,7 +3,7 @@ var socket = null;
 
 $(document).ready(function() {
     if( window['io'] ) {
-        socket = io.connect( window.location.hostname );
+        socket = io.connect( window.location.protocol + "//" + window.location.hostname );
         /**
         var socket = io.connect( window.location.hostname );
         socket.on('pong', function(data) { console.log("PONG", data); });
