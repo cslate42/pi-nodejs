@@ -1,6 +1,5 @@
 
 //FILES AND URLS
-global.ROOT_PATH = process.cwd() + '/';
 global.UPLOAD_PATH = global.ROOT_PATH + 'public/uploads/';
 //var os = require("os");
 //global.BASE_URL = os.hostname();
