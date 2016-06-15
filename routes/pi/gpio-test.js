@@ -21,3 +21,4 @@ router.all('/', function(req, res, next) {
     res.render('ajax/media/uploaded', data);
 });
 
+module.exports = router;
