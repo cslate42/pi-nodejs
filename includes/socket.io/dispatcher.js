@@ -27,7 +27,6 @@ global.socketIoDispatcher = function(client) {
     client.on('ping', function (data) {
         console.log("ping");
 
-        delay = data["duration"];
         client.emit("pong", data);
         client.broadcast.emit('pong', data);
     });
