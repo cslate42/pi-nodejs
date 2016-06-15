@@ -3,7 +3,7 @@ var router = express.Router();
 var sprintf = require('sprintf').sprintf;
 
 // --------------------------- LIBRARIES --------------------------------
-var gpio = require(global.ROOT_PATH + 'lib/pi-interface/file');
+var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio');
 /**
  * Flip LED on and off
  * @param {type} param1
