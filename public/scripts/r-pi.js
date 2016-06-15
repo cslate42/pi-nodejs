@@ -5,7 +5,7 @@ socket.on('update-controls-results', function (data) {
     console.log("update controls results", data);
 });
 
-function emitUpdatedInterface(keysPressed) {
+function emitUpdatedControls(keysPressed) {
     socket.emit('update-controls', { keysPressed: keysPressed });
 }
 

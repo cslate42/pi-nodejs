@@ -13,7 +13,6 @@ function keyboardInterface() {
         return; //if not supposed to listen to controls don't
     }
     
-    
     $(document).keydown( function( event ){
         if ( ! isListenToKeyboard ) return;
         //save key to keys pressed object
@@ -23,7 +22,7 @@ function keyboardInterface() {
 
         //dispatcher for what to do on key press
         try {
-            piRun();
+            emitUpdatedControls( keysPressed );
         } catch( error ) {
             console.log("Caught piRun error", error);
         } finally {
