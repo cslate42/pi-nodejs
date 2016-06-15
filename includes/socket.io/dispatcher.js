@@ -5,11 +5,13 @@
  * @param {type} client
  * @returns {undefined}
  */
-function socketIoDispatcher(client) {
+global.socketIoDispatcher = function(client) {
     console.log("CLIENT CONNECTIED");
     
     for( var key in global.socketIoClients ) {
-        client.on(key, global.socketIoClients[key]);
+        client.on(key, function(data){
+            global.socketIoClients[key](client, data);
+        });
     }
     
 //    client.on('join', function(data) {
@@ -29,8 +31,4 @@ function socketIoDispatcher(client) {
 //        client.emit("pong", data);
 //        client.broadcast.emit('pong', data);
 //    });
-}
-
-module.exports = {
-    socketIoDispatcher: socketIoDispatcher,
 };
