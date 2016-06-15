@@ -24,9 +24,10 @@ var sprintf = require('sprintf').sprintf;
 var session = require('client-sessions');
 
 var app = express();
-var server = http.Server(app);
+//var server = http.Server(app);
+var server = http.createServer(app);
 
-var io = require('socket.io').listen(server);
+var io = require('socket.io')(server);
 
 /************************************ START SETUP SERVER *********************************************************/
 
@@ -198,6 +199,3 @@ io.sockets.on('connection', function (socket) {
 //export stuff
 global.app = app;
 module.exports = app;
-
-
-

@@ -3,8 +3,12 @@ var socket = null;
 
 $(document).ready(function() {
     if( window['io'] ) {
-        var socket = io.connect( window.hostname );
-        
+        socket = io.connect( window.location.hostname );
+        /**
+        var socket = io.connect( window.location.hostname );
+        socket.on('pong', function(data) { console.log("PONG", data); });
+        socket.emit('ping', {duration: 2});
+        **/
         socket.on('pong', function (data) {
             console.log("pong");
         });
