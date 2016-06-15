@@ -6,7 +6,6 @@ var util = require('util');
 var sprintf = require('sprintf').sprintf;
 
 // --------------------------- LIBRARIES --------------------------------
-var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio.js');
 
 /**
  * Flip LED on and off
@@ -14,12 +13,10 @@ var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio.js');
 router.all('/', function(req, res, next) {
     global.preparePageData(req, res, next);
     
-    gpio.on();
-    setTimeout(function(){ gpio.off(); }, 1000);
+    global.gpio.on();
+    setTimeout(function(){ global.gpio.off(); }, 1000);
     
-    var data = {
-        rows: null
-    };
+    var data = { data: {} };
     res.render('ajax/json', data);
 });
 

@@ -1,18 +1,6 @@
 /* global __dirname, process, module, global */
 
-var debug = require('debug')('my-app:server');
-var http = require('http');
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-//var bodyParser = require('body-parser');
 var files = require('./lib/file');
-var sprintf = require('sprintf').sprintf;
-//var vsprintf = require('sprintf').vsprintf;
-var session = require('client-sessions');
-
 //include everything in /includes/
 console.log("CWD:", process.cwd());
 files.getAllFilesInDirectory("./includes").forEach(function (file) {
@@ -21,6 +9,19 @@ files.getAllFilesInDirectory("./includes").forEach(function (file) {
 });
 
 global.dbDebug = false;
+global.gpio = require('.lib/pi-interface/gpio.js');
+
+var debug = require('debug')('my-app:server');
+var http = require('http');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+//var bodyParser = require('body-parser');
+var sprintf = require('sprintf').sprintf;
+//var vsprintf = require('sprintf').vsprintf;
+var session = require('client-sessions');
 
 /************************************ START SETUP SERVER *********************************************************/
 var app = express();
