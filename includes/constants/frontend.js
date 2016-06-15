@@ -8,12 +8,12 @@ global.ROWS_PER_PAGE = 15;
 global.DISPLAYED_PAGINATION_RANGE = 2;
 
 global.PROTOCAL = "http";
-global.DOMAIN = "crm.contractnorthshore.com";
+global.DOMAIN = "localhost";
 global.ROOT_URL = global.PROTOCAL + "://" + global.DOMAIN + "/";
 
 //FORMS
 global.MIN_TEXT_AREA_LENGTH = 100;
-global.FORM_PREFIX = 'pwm-field-';
+global.FORM_PREFIX = 'field-';
 
 //LAYOUTS FOR JADE
 global.LAYOUT = {

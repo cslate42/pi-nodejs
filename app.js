@@ -1,16 +1,5 @@
 /* global __dirname, process, module, global */
 
-var files = require('./lib/file');
-//include everything in /includes/
-console.log("CWD:", process.cwd());
-files.getAllFilesInDirectory("./includes").forEach(function (file) {
-    console.log("Requiring: " + file);
-    require(file);
-});
-
-global.dbDebug = false;
-global.gpio = require('./lib/pi-interface/gpio.js');
-
 var debug = require('debug')('my-app:server');
 var http = require('http');
 var express = require('express');
@@ -26,32 +15,21 @@ var session = require('client-sessions');
 var app = express();
 //var server = http.Server(app);
 var server = http.createServer(app);
-
 var io = require('socket.io')(server);
 
+var files = require('./lib/file');
+//include everything in /includes/
+console.log("CWD:", process.cwd());
+//setup sockeit io client handlers
+global.socketIoClients = {};
+files.getAllFilesInDirectory("./includes").forEach(function (file) {
+    console.log("Requiring: " + file);
+    require(file);
+});
+global.gpio = require('./lib/pi-interface/gpio.js');
 
 /**************************************** START WEB SOCKET SETUP *******************************************************/
-io.on('connection', function (client) {
-    console.log("CLIENT CONNECTIED");
-    
-    client.on('join', function(data) {
-        console.log(data);
-    });
-    
-    client.on('messages', function(data) {
-        client.emit('broad', data);
-        client.broadcast.emit('broad',data);
-    });
-    
-    // If we recieved a command from a client to start watering lets do so
-    client.on('ping', function (data) {
-        console.log("ping");
-
-        delay = data["duration"];
-        client.emit("pong", data);
-        client.broadcast.emit('pong', data);
-    });
-});
+io.on('connection', global.socketIoDispatcher);
 /**************************************** END WEB SOCKET SETUP *******************************************************/
 
 /************************************ START SETUP SERVER *********************************************************/
