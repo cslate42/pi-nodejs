@@ -9,7 +9,7 @@ var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio');
  * @param {type} param1
  * @param {type} param2
  */
-router.post('/', function(req, res, next) {
+router.all('/', function(req, res, next) {
     global.preparePageData(req, res, next);
     
     gpio.on();
