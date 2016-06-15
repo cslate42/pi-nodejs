@@ -31,18 +31,25 @@ var io = require('socket.io')(server);
 
 
 /**************************************** START WEB SOCKET SETUP *******************************************************/
-io.sockets.on('connection', function (socket) {
-    console.log("SOCKET?", socket);
+io.on('connection', function (client) {
+    console.log("CLIENT CONNECTIED");
+    
+    client.on('join', function(data) {
+        console.log(data);
+    });
+    
+    client.on('messages', function(data) {
+        client.emit('broad', data);
+        client.broadcast.emit('broad',data);
+    });
+    
     // If we recieved a command from a client to start watering lets do so
-    socket.on('ping', function (data) {
+    client.on('ping', function (data) {
         console.log("ping");
 
         delay = data["duration"];
-
-        // Set a timer for when we should stop watering
-        setTimeout(function () {
-            socket.emit("pong");
-        }, delay * 1000);
+        client.emit("pong", data);
+        client.broadcast.emit('pong', data);
     });
 });
 /**************************************** END WEB SOCKET SETUP *******************************************************/
