@@ -1,5 +1,5 @@
 
-var gpio = require(global.ROOT_PATH . 'lib/pi-interface/gpio');
+var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio');
 
 global.socketIoClients['update-controls'] = function (client, data) {
     var keysPressed = data['keysPressed'] ? data['keysPressed'] : [];
