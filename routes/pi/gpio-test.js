@@ -2,7 +2,6 @@
 
 var express = require('express');
 var router = express.Router();
-var upload = multer({dest: './tmp/'});
 var util = require('util');
 var sprintf = require('sprintf').sprintf;
 

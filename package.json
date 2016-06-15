@@ -26,6 +26,8 @@
     "serve-favicon": "~2.3.0",
     "morgan": "~1.7.0",
     "path": "~0.12.7",
+    "rpi-gpio": "^0.7.0",
+    "python-shell": "~0.4.0",
     "client-sessions": "~0.7.0",
     "body-parser": "~1.15.1",
     "express": "~4.13.4",
@@ -47,8 +49,8 @@
   "scripts": {
     "test": "mocha --reporter spec"
   },
-  "bin": {
-    "pi-gpio": "server.js"
+  "scripts": {
+    "start": "app.js"
   },
   "directories": {
     "example": "example",
