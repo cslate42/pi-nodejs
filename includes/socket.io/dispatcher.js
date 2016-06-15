@@ -14,20 +14,20 @@ global.socketIoDispatcher = function(client) {
         });
     }
     
-    client.on('join', function(data) {
-        console.log(data);
-    });
-    
-    client.on('messages', function(data) {
-        client.emit('broad', data);
-        client.broadcast.emit('broad',data);
-    });
-    
-    // If we recieved a command from a client to start watering lets do so
-    client.on('ping', function (data) {
-        console.log("ping");
-
-        client.emit("pong", data);
-        client.broadcast.emit('pong', data);
-    });
+//    client.on('join', function(data) {
+//        console.log(data);
+//    });
+//    
+//    client.on('messages', function(data) {
+//        client.emit('broad', data);
+//        client.broadcast.emit('broad',data);
+//    });
+//    
+//    // If we recieved a command from a client to start watering lets do so
+//    client.on('ping', function (data) {
+//        console.log("ping");
+//
+//        client.emit("pong", data);
+//        client.broadcast.emit('pong', data);
+//    });
 };
