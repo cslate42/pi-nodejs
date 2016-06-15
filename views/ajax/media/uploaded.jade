@@ -1,0 +1,20 @@
+//-generates the innerds of tables 2 be paired with ajax
+include ../../includes/all_includes
+
+//-debugging
+    pre #{JSON.stringify(media, null, 2)}
+    pre #{JSON.stringify(mediaAttrs, null, 2)}
+
+each row in rows
+    - media = row.media
+    - mediaAttrs = row.mediaAttrs
+    .media-row.col-xs-12
+        if ( typeof media === 'object' && ! isNaN(media.id) )
+            //-.col-xs-12.field-uploaded-media-id-#{media.id}&attributes(mediaAttrs)
+            div.uploaded-media(class="field-uploaded-media-id-#{media.id}")&attributes(mediaAttrs)
+                img(src="#{media.link}")
+            div.field-upload-media-actions
+                a.confirmClick.media-action-delete.btn.btn-default(type="button", id="media-delete-#{media.id}"
+                    href="javascript:ajaxDeleteMedia(#{media.id}, \"#media-delete-#{media.id}\");") Delete
+        else
+            p Error

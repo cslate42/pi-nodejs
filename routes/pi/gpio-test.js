@@ -20,7 +20,7 @@ router.all('/', function(req, res, next) {
     var data = {
         rows: null
     };
-    res.render('ajax/media/uploaded', data);
+    res.render('ajax/json', data);
 });
 
 module.exports = router;
