@@ -28,6 +28,7 @@ var app = express();
 // create http server
 var server = http.Server(app);
 var PORT = 80;
+
 // Listen on provided port, on all network interfaces.
 server.listen(PORT, function(val) {
     var port = parseInt(val, 10);
@@ -44,14 +45,13 @@ server.listen(PORT, function(val) {
 
     return false;
 });
+
 server.on('error', function(error) {
     if (error.syscall !== 'listen') {
         throw error;
     }
 
-    var bind = typeof PORT === 'string'
-            ? 'Pipe ' + PORT
-            : 'Port ' + PORT;
+    var bind = typeof PORT === 'string' ? 'Pipe ' + PORT : 'Port ' + PORT;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -67,11 +67,10 @@ server.on('error', function(error) {
             throw error;
     }
 });
+
 server.on('listening', function() {
     var addr = server.address();
-    var bind = typeof addr === 'string'
-            ? 'pipe ' + addr
-            : 'port ' + addr.port;
+    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('Listening on ' + bind);
 });
 
@@ -88,6 +87,7 @@ app.use(session({
         //secure: false // when true, cookie will only be sent over SSL. use key 'secureProxy' instead if you handle SSL not in your node process
     }
 }));
+
 //return all files as static from /public/
 app.use(express.static(path.join(__dirname, 'public')));
 app.locals.sprintf = sprintf;
@@ -115,11 +115,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+//app.use(function (req, res, next) {
+//    var err = new Error('Not Found');
+//    err.status = 404;
+//    next(err);
+//});
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
