@@ -23,15 +23,18 @@ var sprintf = require('sprintf').sprintf;
 //var vsprintf = require('sprintf').vsprintf;
 var session = require('client-sessions');
 
-/************************************ START SETUP SERVER *********************************************************/
 var app = express();
+var server = http.Server(app);
+
+var io = require('socket.io').listen(server);
+
+/************************************ START SETUP SERVER *********************************************************/
 
 // create http server
-var server = http.Server(app);
 var PORT = 80;
 
 // Listen on provided port, on all network interfaces.
-server.listen(PORT, function(val) {
+server.listen(PORT, function (val) {
     var port = parseInt(val, 10);
 
     if (isNaN(port)) {
@@ -47,7 +50,7 @@ server.listen(PORT, function(val) {
     return false;
 });
 
-server.on('error', function(error) {
+server.on('error', function (error) {
     if (error.syscall !== 'listen') {
         throw error;
     }
@@ -69,7 +72,7 @@ server.on('error', function(error) {
     }
 });
 
-server.on('listening', function() {
+server.on('listening', function () {
     var addr = server.address();
     var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('Listening on ' + bind);
@@ -161,7 +164,7 @@ routes.forEach(function (route, index, array) {
 console.log("------------END ROUTES-----------------");
 /**************************************** END ROUTES SETUP *******************************************************/
 
-/**************************************** START JADE FILE SETUP SETUP *******************************************************/
+/**************************************** START JADE FILE SETUP *******************************************************/
 //all styles to be included in headers
 var stylesheetsPath = "./public/css/";
 files.getAllFilesInDirectory(stylesheetsPath).forEach(function (file, index, array) {
@@ -173,7 +176,24 @@ var scriptsPath = "./public/scripts/";
 files.getAllFilesInDirectory(scriptsPath).forEach(function (file, index, array) {
     global.LAYOUT.INCLUDES.SCRIPTS.push("/scripts" + file.replace(scriptsPath, ''));
 });
-/**************************************** END JADE FILE SETUP SETUP *******************************************************/
+/**************************************** END JADE FILE SETUP *******************************************************/
+
+
+/**************************************** START WEB SOCKET SETUP *******************************************************/
+io.sockets.on('connection', function (socket) {
+    // If we recieved a command from a client to start watering lets do so
+    socket.on('ping', function (data) {
+        console.log("ping");
+
+        delay = data["duration"];
+
+        // Set a timer for when we should stop watering
+        setTimeout(function () {
+            socket.emit("pong");
+        }, delay * 1000);
+    });
+});
+/**************************************** END WEB SOCKET SETUP *******************************************************/
 
 //export stuff
 global.app = app;
