@@ -1,13 +1,16 @@
+/* global module, global */
+
 var express = require('express');
 var router = express.Router();
+var upload = multer({dest: './tmp/'});
+var util = require('util');
 var sprintf = require('sprintf').sprintf;
 
 // --------------------------- LIBRARIES --------------------------------
-var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio');
+var gpio = require(global.ROOT_PATH + 'lib/pi-interface/gpio.js');
+
 /**
  * Flip LED on and off
- * @param {type} param1
- * @param {type} param2
  */
 router.all('/', function(req, res, next) {
     global.preparePageData(req, res, next);
@@ -16,7 +19,7 @@ router.all('/', function(req, res, next) {
     setTimeout(function(){ gpio.off(); }, 1000);
     
     var data = {
-        rows: rows
+        rows: null
     };
     res.render('ajax/media/uploaded', data);
 });
