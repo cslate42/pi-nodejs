@@ -27,9 +27,9 @@ function keyboardInterface() {
         if( ! isListenToKeyboard ) return;
         //console.log("REMOVING", event.key, event.which);
         //keysPressed[ event.key ] = null;
-        emitUpdatedControls( keysPressed );
-        
         delete keysPressed[ event.key ];
+        
+        emitUpdatedControls( keysPressed );
     });
 }
 
