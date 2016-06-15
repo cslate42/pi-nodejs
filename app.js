@@ -31,7 +31,8 @@ var io = require('socket.io')(server);
 
 
 /**************************************** START WEB SOCKET SETUP *******************************************************/
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
+    console.log("SOCKET?", socket);
     // If we recieved a command from a client to start watering lets do so
     socket.on('ping', function (data) {
         console.log("ping");
