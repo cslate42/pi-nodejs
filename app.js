@@ -29,6 +29,23 @@ var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
+
+/**************************************** START WEB SOCKET SETUP *******************************************************/
+io.on('connection', function (socket) {
+    // If we recieved a command from a client to start watering lets do so
+    socket.on('ping', function (data) {
+        console.log("ping");
+
+        delay = data["duration"];
+
+        // Set a timer for when we should stop watering
+        setTimeout(function () {
+            socket.emit("pong");
+        }, delay * 1000);
+    });
+});
+/**************************************** END WEB SOCKET SETUP *******************************************************/
+
 /************************************ START SETUP SERVER *********************************************************/
 
 // create http server
@@ -178,23 +195,6 @@ files.getAllFilesInDirectory(scriptsPath).forEach(function (file, index, array) 
     global.LAYOUT.INCLUDES.SCRIPTS.push("/scripts" + file.replace(scriptsPath, ''));
 });
 /**************************************** END JADE FILE SETUP *******************************************************/
-
-
-/**************************************** START WEB SOCKET SETUP *******************************************************/
-io.on('connection', function (socket) {
-    // If we recieved a command from a client to start watering lets do so
-    socket.on('ping', function (data) {
-        console.log("ping");
-
-        delay = data["duration"];
-
-        // Set a timer for when we should stop watering
-        setTimeout(function () {
-            socket.emit("pong");
-        }, delay * 1000);
-    });
-});
-/**************************************** END WEB SOCKET SETUP *******************************************************/
 
 //export stuff
 global.app = app;
