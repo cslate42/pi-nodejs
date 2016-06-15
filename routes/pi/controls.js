@@ -16,8 +16,8 @@ router.all('/', function(req, res, next) {
     global.gpio.on();
     setTimeout(function(){ global.gpio.off(); }, 1000);
     
-    var data = { data: {} };
-    res.render('ajax/json', data);
+    var data = { data: "HERE" };
+    res.render('pi/controls', data);
 });
 
 module.exports = router;
