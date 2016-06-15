@@ -6,7 +6,13 @@ socket.on('update-controls-results', function (data) {
 });
 
 function emitUpdatedControls(keysPressed) {
-    socket.emit('update-controls', { keysPressed: keysPressed });
+    try {
+        socket.emit('update-controls', { keysPressed: keysPressed });
+    } catch( error ) {
+        console.log("Caught piRun error", error);
+    } finally {
+        piStop();
+    }
 }
 
 function piRun() {

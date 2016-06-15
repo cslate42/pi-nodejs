@@ -21,18 +21,14 @@ function keyboardInterface() {
         keysPressed[ key ] = keyCode;
 
         //dispatcher for what to do on key press
-        try {
-            emitUpdatedControls( keysPressed );
-        } catch( error ) {
-            console.log("Caught piRun error", error);
-        } finally {
-            piStop();
-        }
+        emitUpdatedControls( keysPressed );
     });
     $(document).keyup(function(event){
         if( ! isListenToKeyboard ) return;
-        console.log("REMOVING", event.key, event.which);
-        keysPressed[ event.key ] = null;
+        //console.log("REMOVING", event.key, event.which);
+        //keysPressed[ event.key ] = null;
+        emitUpdatedControls( keysPressed );
+        
         delete keysPressed[ event.key ];
     });
 }
