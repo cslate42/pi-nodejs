@@ -44,6 +44,7 @@ html.no-js
         script(src='/assets/bootstrap.3.3.5.min.js')
         
         script(src="/assets/jquery-popup-overlay-gh-pages/jquery.popupoverlay.js")
+        script(src="/assets/socket.io.js")
         
         //- !!!!!!! MY_SCRIPTS !!!!!!!!!!!!! 
         each scriptFile in global.LAYOUT.INCLUDES.SCRIPTS
@@ -54,6 +55,11 @@ html.no-js
             
     body(ontouchstart='')
         header
+            .container-fluid
+                .row
+                    .col-xs-12
+                        a(href='/')
+                            img(src='images/logo.png')
         
         .content
             //-page info created dynamically
