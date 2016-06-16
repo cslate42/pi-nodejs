@@ -7,9 +7,9 @@ global.socketIoClients['update-controls'] = function (client, data) {
     
     //------------------CHASSIS CONTROLS---------------------------------
     if( keysPressed['ArrowUp'] && keysPressed['ArrowLeft'] ) {
-        chassisFowardLeft();
+        chassisForwardLeft();
     } else if( keysPressed['ArrowUp'] && keysPressed['ArrowRight'] ) {
-        chassisFowardRight();
+        chassisForwardRight();
     } else if( keysPressed['ArrowDown'] && keysPressed['ArrowLeft'] ) {
         chassisBackwardLeft();
     } else if( keysPressed['ArrowDown'] && keysPressed['ArrowRight'] ) {
