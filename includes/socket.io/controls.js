@@ -39,14 +39,17 @@ global.socketIoClients['update-controls'] = function (client, data) {
     client.emit("update-controls-results", data);
 };
 
+
 function chassisForwardLeft() {
-    gpio.pin(gpio.CONST.lMotorBack, 1);
+    //TODO pwm
+    gpio.pin(gpio.CONST.lMotorBack, 0);
     gpio.pin(gpio.CONST.lMotorFor, 0);
     gpio.pin(gpio.CONST.rMotorBack, 0);
-    gpio.pin(gpio.CONST.rMotorFor, 1);
+    gpio.pin(gpio.CONST.rMotorFor, 0);
 }
 
 function chassisForwardRight() {
+    //TODO pwm
     gpio.pin(gpio.CONST.lMotorBack, 1);
     gpio.pin(gpio.CONST.lMotorFor, 0);
     gpio.pin(gpio.CONST.rMotorBack, 0);
@@ -54,6 +57,7 @@ function chassisForwardRight() {
 }
 
 function chassisBackwardLeft() {
+    //TODO pwm
     gpio.pin(gpio.CONST.lMotorBack, 1);
     gpio.pin(gpio.CONST.lMotorFor, 0);
     gpio.pin(gpio.CONST.rMotorBack, 0);
@@ -61,6 +65,7 @@ function chassisBackwardLeft() {
 }
 
 function chassisBackwardRight() {
+    //TODO pwm
     gpio.pin(gpio.CONST.lMotorBack, 1);
     gpio.pin(gpio.CONST.lMotorFor, 0);
     gpio.pin(gpio.CONST.rMotorBack, 0);
@@ -68,24 +73,24 @@ function chassisBackwardRight() {
 }
 
 function chassisForward() {
-    gpio.pin(gpio.CONST.lMotorBack, 1);
-    gpio.pin(gpio.CONST.lMotorFor, 0);
+    gpio.pin(gpio.CONST.lMotorBack, 0);
+    gpio.pin(gpio.CONST.lMotorFor, 1);
     gpio.pin(gpio.CONST.rMotorBack, 0);
     gpio.pin(gpio.CONST.rMotorFor, 1);
 }
 
 function chassisRight() {
-    gpio.pin(gpio.CONST.lMotorBack, 1);
-    gpio.pin(gpio.CONST.lMotorFor, 0);
-    gpio.pin(gpio.CONST.rMotorBack, 0);
-    gpio.pin(gpio.CONST.rMotorFor, 1);
+    gpio.pin(gpio.CONST.lMotorBack, 0);
+    gpio.pin(gpio.CONST.lMotorFor, 1);
+    gpio.pin(gpio.CONST.rMotorBack, 1);
+    gpio.pin(gpio.CONST.rMotorFor, 0);
 }
 
 function chassisBackward() {
     gpio.pin(gpio.CONST.lMotorBack, 1);
     gpio.pin(gpio.CONST.lMotorFor, 0);
-    gpio.pin(gpio.CONST.rMotorBack, 0);
-    gpio.pin(gpio.CONST.rMotorFor, 1);
+    gpio.pin(gpio.CONST.rMotorBack, 1);
+    gpio.pin(gpio.CONST.rMotorFor, 0);
 }
 
 function chassisLeft() {
