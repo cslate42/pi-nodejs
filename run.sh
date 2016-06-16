@@ -2,4 +2,4 @@
 # TODO use pm2
 pwd=$(pwd)
 
-sudo nodejs --harmony "$pwd/app.js"
+sudo node --harmony "$pwd/app.js"

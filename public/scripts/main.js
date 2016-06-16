@@ -31,6 +31,10 @@ function keyboardInterface() {
         
         emitUpdatedControls( keysPressed );
     });
+    
+    $("#get-keys-pressed-btn").click( function() {
+        console.log("KEYS Pressed", keysPressed);
+    });
 }
 
 function isKeyPressed(keyCode) {
